@@ -26,9 +26,11 @@ public class Player : MonoBehaviour
     private bool attack2;
     private bool attack3;
     private bool roll;
-    
+    private bool dash;
+
     void Start()
     {
+        dash= false;
         rlook= true;
         rb2D= GetComponent<Rigidbody2D>();
         myanims= GetComponent<Animator>();
@@ -48,25 +50,29 @@ public class Player : MonoBehaviour
         ChangeDirection(hori);
         AttackMovement();
         Reset_();
-        MovementLayer();
+        
     }
-
 
     private void BasicMovement(float hori)
     {
+        
         if(rb2D.velocity.y<0)
         {
             myanims.SetBool("Down", true);
         }
-        if(!myanims.GetBool("Roll") && !this.myanims.GetCurrentAnimatorStateInfo(0).IsTag("Attack1") && (inGround ||AirControll))
+        else
         {
             rb2D.velocity = new Vector2(hori * speed, rb2D.velocity.y);
         }
-        else if(!myanims.GetBool("Roll") && !this.myanims.GetCurrentAnimatorStateInfo(0).IsTag("Attack2") && (inGround || AirControll))
+        if(!dash && !myanims.GetBool("Roll") && !this.myanims.GetCurrentAnimatorStateInfo(0).IsTag("Attack1") && (inGround ||AirControll))
         {
             rb2D.velocity = new Vector2(hori * speed, rb2D.velocity.y);
         }
-        else if (!myanims.GetBool("Roll") && !this.myanims.GetCurrentAnimatorStateInfo(0).IsTag("Attack3") && (inGround || AirControll))
+        else if(!dash && !myanims.GetBool("Roll") && !this.myanims.GetCurrentAnimatorStateInfo(0).IsTag("Attack2") && (inGround || AirControll))
+        {
+            rb2D.velocity = new Vector2(hori * speed, rb2D.velocity.y);
+        }
+        else if (!dash && !myanims.GetBool("Roll") && !this.myanims.GetCurrentAnimatorStateInfo(0).IsTag("Attack3") && (inGround || AirControll))
         {
             rb2D.velocity = new Vector2(hori * speed, rb2D.velocity.y);
         }
@@ -75,29 +81,34 @@ public class Player : MonoBehaviour
         {
             if(inGround)
             {
+                rb2D.AddForce(new Vector2(0, JumpPower));
                 doubleJump = true;
             }
             else
             {
-                doubleJump=false; 
+                rb2D.AddForce(new Vector2(0, JumpPower/1.2f));
+                doubleJump =false; 
             }
             inGround= false;
-            rb2D.AddForce(new Vector2(0,JumpPower));
+            
             myanims.SetTrigger("Jump");
         }
         
-        if(roll && !this.myanims.GetCurrentAnimatorStateInfo(0).IsName("Roll"))
+
+        if (roll && !this.myanims.GetCurrentAnimatorStateInfo(0).IsName("Roll"))
         {
             myanims.SetBool("Roll", true);
             roll = false;
         }
-        else if(!roll && !this.myanims.GetCurrentAnimatorStateInfo(0).IsName("Roll"))
+        else if (!roll && !this.myanims.GetCurrentAnimatorStateInfo(0).IsName("Roll")) ;
         {
             myanims.SetBool("Roll", false);
         }
 
         myanims.SetFloat("Speed",Mathf.Abs(hori));
     }
+
+    
 
     private void AttackMovement()
     {
@@ -133,21 +144,20 @@ public class Player : MonoBehaviour
         {
             attack3 = true;
         }
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKeyDown(KeyCode.LeftShift))
         {
-            roll = true;
+                roll = true;
+           
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             jump= true;
 
-           
-            
-            
         }
-
+       
     }
 
+    
     private void ChangeDirection(float hori)
     {
         if(hori>0 && !rlook || hori<0 && rlook)
@@ -166,6 +176,7 @@ public class Player : MonoBehaviour
         attack3 = false;
         roll = false;
         jump= false;
+        dash= false;
 
     }
 
@@ -189,19 +200,5 @@ public class Player : MonoBehaviour
             }
         }
         return false;
-    }
-
-    private void MovementLayer()
-    {
-        if(inGround)
-        {
-            myanims.SetLayerWeight(1, 1);
-
-        }
-        else
-        {
-            myanims.SetLayerWeight(1, 0);
-        }
-
     }
 }
