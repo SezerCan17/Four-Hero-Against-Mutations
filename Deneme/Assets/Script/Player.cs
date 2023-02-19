@@ -163,9 +163,7 @@ public class Player : MonoBehaviour
         if(hori>0 && !rlook || hori<0 && rlook)
         {
             rlook = !rlook;
-            Vector3 yon = transform.localScale;
-            yon.x *= -1;
-            transform.localScale = yon;
+            transform.Rotate(0, 180, 0);
         }
     }
 
