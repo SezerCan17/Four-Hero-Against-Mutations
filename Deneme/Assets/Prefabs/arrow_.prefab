@@ -155,3 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ArrowSpeed: 10
   endTime: 2
+  arrowImpact: {fileID: 319263256001338225, guid: 937b517ec906e48479800c72747bffdd, type: 3}
+  arrowKaravana: {fileID: 8676545872005792018, guid: 1d1e67b8ae9738d4bb64043eec332518, type: 3}
+  arrowTime: 1.5
+  arrowMaxTime: 1.5

@@ -8,14 +8,16 @@ public class Arrow : MonoBehaviour
     public float ArrowSpeed;
     public float endTime;
     public GameObject arrowImpact;
-    Bow bow;
+    public GameObject arrowKaravana;
+    
+    
    
 
     void Awake()
     {
         rb2D= GetComponent<Rigidbody2D>();
         rb2D.velocity = transform.right * ArrowSpeed;
-        //Destroy(gameObject,endTime);
+        Destroy(gameObject,endTime);
         
         
     }
@@ -25,11 +27,18 @@ public class Arrow : MonoBehaviour
     {
         if(collision.CompareTag("Enemy"))
         {
-            
-           
+            Destroy(gameObject);
+            GameObject sil = Instantiate(arrowImpact, transform.position, transform.rotation);
+            Destroy(sil, 0.667f);
+
         }
-        GameObject sil= Instantiate(arrowImpact,transform.position, transform.rotation);
-        Destroy(sil,0.333f);
+        if(collision.CompareTag("Ground"))
+        {
+            Destroy(gameObject);
+            GameObject sil = Instantiate(arrowKaravana,transform.position, transform.rotation);
+            Destroy(sil, 0.667f);
+        }
+        
     }  
 
 
