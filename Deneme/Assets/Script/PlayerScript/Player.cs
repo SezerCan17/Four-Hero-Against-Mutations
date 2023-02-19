@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     private bool attack3;
     private bool roll;
     private bool dash;
+    private bool defend;
 
     void Start()
     {
@@ -128,6 +129,7 @@ public class Player : MonoBehaviour
             rb2D.velocity = Vector2.zero;
         }
 
+
     }
 
     private void Controller()
@@ -154,6 +156,13 @@ public class Player : MonoBehaviour
             jump= true;
 
         }
+        if(Input.GetKeyDown(KeyCode.V))
+        {
+            defend= true;
+            myanims.SetTrigger("Defend");
+            rb2D.velocity = Vector2.zero;
+
+        }
        
     }
 
@@ -166,6 +175,8 @@ public class Player : MonoBehaviour
             transform.Rotate(0, 180, 0);
         }
     }
+
+    
 
     private void Reset_()
     {

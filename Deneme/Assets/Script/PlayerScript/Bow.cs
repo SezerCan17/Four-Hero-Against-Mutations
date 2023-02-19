@@ -6,12 +6,14 @@ public class Bow : MonoBehaviour
 {
     public Transform Arrow_;
     public GameObject ArrowPrefabs;
-    void Update()
+    
+    private void FixedUpdate()
     {
         if(Input.GetKeyDown(KeyCode.X))
         {
             Shoot();
         }
+       
 
     }
 
@@ -19,4 +21,5 @@ public class Bow : MonoBehaviour
     {
         Instantiate(ArrowPrefabs, Arrow_.position, Arrow_.rotation);
     }
+   
 }

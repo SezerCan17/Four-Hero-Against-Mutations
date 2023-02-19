@@ -10,16 +10,11 @@ public class Arrow : MonoBehaviour
     public GameObject arrowImpact;
     public GameObject arrowKaravana;
     
-    
-   
-
     void Awake()
     {
         rb2D= GetComponent<Rigidbody2D>();
         rb2D.velocity = transform.right * ArrowSpeed;
         Destroy(gameObject,endTime);
-        
-        
     }
    
 
@@ -38,9 +33,5 @@ public class Arrow : MonoBehaviour
             GameObject sil = Instantiate(arrowKaravana,transform.position, transform.rotation);
             Destroy(sil, 0.667f);
         }
-        
-    }  
-
-
-
+    } 
 }
