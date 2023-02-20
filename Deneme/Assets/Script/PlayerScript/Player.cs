@@ -207,4 +207,15 @@ public class Player : MonoBehaviour
         }
         return false;
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            myanims.SetTrigger("Take_Hit");
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        
+    }
 }
