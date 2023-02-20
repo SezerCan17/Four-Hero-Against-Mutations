@@ -140,6 +140,12 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
+            if ((this.myanims.GetCurrentAnimatorStateInfo(0).IsTag("Jump") || this.myanims.GetCurrentAnimatorStateInfo(0).IsTag("Down")))
+            {
+                myanims.SetTrigger("JumpAttack");
+                rb2D.velocity = Vector2.zero;
+            }
+            else
             attack2 = true;
         }
         if (Input.GetKeyDown(KeyCode.C))
@@ -158,11 +164,12 @@ public class Player : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.V))
         {
-            defend= true;
-            myanims.SetTrigger("Defend");
-            rb2D.velocity = Vector2.zero;
-
+                defend = true;
+                myanims.SetTrigger("Defend");
+                rb2D.velocity = Vector2.zero;
+           
         }
+        
        
     }
 

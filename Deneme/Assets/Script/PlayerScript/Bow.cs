@@ -13,7 +13,7 @@ public class Bow : MonoBehaviour
         {
             Shoot();
         }
-       
+
 
     }
 
@@ -21,5 +21,5 @@ public class Bow : MonoBehaviour
     {
         Instantiate(ArrowPrefabs, Arrow_.position, Arrow_.rotation);
     }
-   
+
 }
