@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class slugDamage : MonoBehaviour
 {
+    public Animator myanims;
     public int damage;
     public PlayerHealth playerHealth;
 
@@ -12,6 +13,7 @@ public class slugDamage : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             playerHealth.TakeDamage(damage);
+            myanims.SetTrigger("Take_Hit");
         }
     }
 }

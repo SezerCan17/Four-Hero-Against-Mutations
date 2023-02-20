@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public Rigidbody2D rb2D;
     private Animator myanims;
+    Bow bow;
 
     [SerializeField]
     private float speed;
@@ -91,21 +92,16 @@ public class Player : MonoBehaviour
                 doubleJump =false; 
             }
             inGround= false;
-            
             myanims.SetTrigger("Jump");
         }
         
 
         if (roll && !this.myanims.GetCurrentAnimatorStateInfo(0).IsName("Roll"))
         {
-            myanims.SetBool("Roll", true);
+            myanims.SetTrigger("Roll2");
             roll = false;
         }
-        else if (!roll && !this.myanims.GetCurrentAnimatorStateInfo(0).IsName("Roll")) ;
-        {
-            myanims.SetBool("Roll", false);
-        }
-
+       
         myanims.SetFloat("Speed",Mathf.Abs(hori));
     }
 
@@ -140,12 +136,6 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
-            if ((this.myanims.GetCurrentAnimatorStateInfo(0).IsTag("Jump") || this.myanims.GetCurrentAnimatorStateInfo(0).IsTag("Down")))
-            {
-                myanims.SetTrigger("JumpAttack");
-                rb2D.velocity = Vector2.zero;
-            }
-            else
             attack2 = true;
         }
         if (Input.GetKeyDown(KeyCode.C))
@@ -155,22 +145,21 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
                 roll = true;
-           
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             jump= true;
-
         }
         if(Input.GetKeyDown(KeyCode.V))
         {
                 defend = true;
                 myanims.SetTrigger("Defend");
                 rb2D.velocity = Vector2.zero;
-           
         }
-        
-       
+        if(Input.GetKeyDown(KeyCode.LeftAlt))
+        {
+            myanims.SetTrigger("JumpAttack");
+        }
     }
 
     
@@ -193,8 +182,9 @@ public class Player : MonoBehaviour
         roll = false;
         jump= false;
         dash= false;
-
     }
+
+    
 
     private bool atGround()
     {

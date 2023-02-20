@@ -9,6 +9,7 @@ public class Arrow : MonoBehaviour
     public float endTime;
     public GameObject arrowImpact;
     public GameObject arrowKaravana;
+    public GameObject arrowJumpAttack;
     
     void Awake()
     {
@@ -33,5 +34,5 @@ public class Arrow : MonoBehaviour
             GameObject sil = Instantiate(arrowKaravana,transform.position, transform.rotation);
             Destroy(sil, 0.667f);
         }
-    } 
+    }
 }
