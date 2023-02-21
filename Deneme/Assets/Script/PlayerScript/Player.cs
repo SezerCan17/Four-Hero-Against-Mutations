@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
     private bool roll;
     private bool dash;
     private bool defend;
+    private bool canAttack=true;
+    private float attackTime=1;
 
     public GameObject objects;
     public int counterObjects = 0;
@@ -114,23 +116,39 @@ public class Player : MonoBehaviour
 
     private void AttackMovement()
     {
-        if(attack1 && !this.myanims.GetCurrentAnimatorStateInfo(0).IsTag("Attack1"))
-        {
-            myanims.SetTrigger("Attack1");
-            rb2D.velocity = Vector2.zero;
+        
+        
+            if (canAttack && attack1 && !this.myanims.GetCurrentAnimatorStateInfo(0).IsTag("Attack1"))
+            {
+                myanims.SetTrigger("Attack1");
+                rb2D.velocity = Vector2.zero;
+            canAttack = false;
+            StartCoroutine(AttackDelay());
         }
-        else if (attack2 && !this.myanims.GetCurrentAnimatorStateInfo(0).IsTag("Attack2"))
-        {
-            myanims.SetTrigger("Attack2");
-            rb2D.velocity = Vector2.zero;
+            else if (canAttack && attack2 && !this.myanims.GetCurrentAnimatorStateInfo(0).IsTag("Attack2"))
+            {
+                myanims.SetTrigger("Attack2");
+                rb2D.velocity = Vector2.zero;
+            canAttack = false;
+            StartCoroutine(AttackDelay());
         }
-        else if (attack3 && !this.myanims.GetCurrentAnimatorStateInfo(0).IsTag("Attack3"))
-        {
-            myanims.SetTrigger("Attack3");
-            rb2D.velocity = Vector2.zero;
-        }
+            else if (canAttack && attack3 && !this.myanims.GetCurrentAnimatorStateInfo(0).IsTag("Attack3"))
+            {
+                myanims.SetTrigger("Attack3");
+                rb2D.velocity = Vector2.zero;
+            canAttack = false;
+            StartCoroutine(AttackDelay());
 
+        }
+            
+        
+        
+    }
 
+    IEnumerator AttackDelay()
+    {
+        yield return new WaitForSeconds(5f);
+        canAttack= true;
     }
 
     private void Sp_Attack()
