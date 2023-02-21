@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class Player : MonoBehaviour
 {
     public Rigidbody2D rb2D;
     private Animator myanims;
-    Bow bow;
 
     [SerializeField]
     private float speed;
@@ -26,9 +27,13 @@ public class Player : MonoBehaviour
     private bool attack1;
     private bool attack2;
     private bool attack3;
+    private bool Sp_attack;
     private bool roll;
     private bool dash;
     private bool defend;
+
+    public GameObject objects;
+    public int counterObjects = 0;
 
     void Start()
     {
@@ -128,6 +133,27 @@ public class Player : MonoBehaviour
 
     }
 
+    private void Sp_Attack()
+    {
+        if(counterObjects==3)
+        {
+            Sp_attack = true;
+        }
+        if(Input.GetKeyDown(KeyCode.B) && Sp_attack) 
+        {
+            myanims.SetTrigger("Sp_Attack");
+            Sp_attack= false;
+            counterObjects = 0;
+
+        }
+    }
+
+    public void Death()
+    {
+        myanims.SetTrigger("Death");
+        
+    }
+
     private void Controller()
     {
         if(Input.GetKeyDown(KeyCode.Z)) 
@@ -159,6 +185,10 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.LeftAlt))
         {
             myanims.SetTrigger("JumpAttack");
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            Sp_Attack();
         }
     }
 
@@ -213,9 +243,22 @@ public class Player : MonoBehaviour
         {
             myanims.SetTrigger("Take_Hit");
         }
+       
     }
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.gameObject.tag == "Objects")
+        {
+            Debug.Log("girdi1");
+            if (counterObjects <= 2)
+            {
+                Debug.Log("girdi2");
+                collision.gameObject.SetActive(false);
+                Sp_Attack();
+                counterObjects++;
+            }
+
+        }
     }
+
 }

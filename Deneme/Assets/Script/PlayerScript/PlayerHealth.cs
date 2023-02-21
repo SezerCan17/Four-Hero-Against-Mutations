@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         health = maxHealth;
+        Player= GetComponent<Player>();
     }
 
     
@@ -20,9 +21,8 @@ public class PlayerHealth : MonoBehaviour
         health -= damage;
         if(health <= 0)
         {
-            Debug.Log("Öldü");
-            myanims.SetTrigger("Death");
+            Player.Death();
         }
-		Player.rb2D.AddForce(new Vector2(50, 100));
+		//Player.rb2D.AddForce(new Vector2(50, 100));
 	}
 }
