@@ -1282,7 +1282,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &249280134
 GameObject:
@@ -4255,7 +4255,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.089472055, y: 0.11658549}
+  m_Offset: {x: 0.009890318, y: 0.02384746}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4266,7 +4266,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7803025, y: 1.6653981}
+  m_Size: {x: 1.502089, y: 1.479922}
   m_EdgeRadius: 0
 --- !u!50 &880375804
 Rigidbody2D:
@@ -4582,7 +4582,7 @@ Transform:
   m_GameObject: {fileID: 949769588}
   m_LocalRotation: {x: -0, y: -0, z: 0.00747499, w: 0.9999721}
   m_LocalPosition: {x: 5.82, y: 10.84, z: 0}
-  m_LocalScale: {x: 1.2007191, y: 1.1217399, z: 1}
+  m_LocalScale: {x: 1.2007189, y: 1.1217396, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 906805378}
@@ -4591,7 +4591,7 @@ Transform:
   - {fileID: 1021781525}
   - {fileID: 828074530}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.857}
 --- !u!114 &949769596
 MonoBehaviour:
@@ -4979,8 +4979,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1076145456}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.09, y: 0.01, z: 0.1301714}
-  m_LocalScale: {x: 1.0159, y: 1.0172, z: 1}
+  m_LocalPosition: {x: -0.01, y: -0.14, z: 0.1301714}
+  m_LocalScale: {x: 0.74657047, y: 0.8843365, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 880375802}
@@ -5046,7 +5046,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1067592838, guid: 2b337dfbf1a11f1429bf1a5aa0eda1c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -7072,7 +7072,7 @@ Transform:
   - {fileID: 356157182}
   - {fileID: 1930645685}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1605039944
 GameObject:

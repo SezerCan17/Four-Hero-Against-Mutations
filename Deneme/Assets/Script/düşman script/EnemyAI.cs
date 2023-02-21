@@ -8,18 +8,22 @@ public class EnemyAI : MonoBehaviour
     public float speed = 5f;
     public float nextWaypointDistance = 3f;
     public Transform enemyGFX;
+   
     public Animator animator;
     Path path;
     int currentWaypoint = 0;
     bool reachedEndOfPath = false;
     Seeker seeker;
     Rigidbody2D rb;
-    void Start()
+    
+
+
+	void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         InvokeRepeating("UpdatePath", 0f, .5f);
-
+        
     }
     void UpdatePath()
     {
@@ -68,8 +72,8 @@ public class EnemyAI : MonoBehaviour
 			enemyGFX.localScale = new Vector3(1f, 1f, 1f);
 		}
 		
-			animator.SetFloat("speed", Mathf.Abs(rb.velocity.x));
-		
-		
+		animator.SetFloat("speed", Mathf.Abs(rb.velocity.x));
+
+        
 	}
 }
