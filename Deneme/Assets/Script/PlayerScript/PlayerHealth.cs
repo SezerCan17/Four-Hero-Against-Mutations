@@ -8,13 +8,24 @@ public class PlayerHealth : MonoBehaviour
     public Animator myanims;
     public int maxHealth = 100;
     public int health;
+
+    public HealthBar healthBar;
     void Start()
     {
         health = maxHealth;
         Player= GetComponent<Player>();
+        healthBar.SetMaxHealth(maxHealth);
     }
 
-    
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.P)) 
+        {
+            TakeDamage(20);
+        }
+    }
+
+
     public void TakeDamage(int damage)
     {
         
@@ -23,6 +34,6 @@ public class PlayerHealth : MonoBehaviour
         {
             Player.Death();
         }
-		//Player.rb2D.AddForce(new Vector2(50, 100));
+		healthBar.SetHealth(health);
 	}
 }
