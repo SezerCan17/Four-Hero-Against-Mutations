@@ -23,9 +23,8 @@ public class PlayerHealth : MonoBehaviour
         {
             TakeDamage(20);
         }
+        
     }
-
-
     public void TakeDamage(int damage)
     {
         
@@ -36,4 +35,5 @@ public class PlayerHealth : MonoBehaviour
         }
 		healthBar.SetHealth(health);
 	}
+    
 }

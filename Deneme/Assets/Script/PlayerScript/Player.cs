@@ -252,10 +252,15 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Enemy"))
+        if(collision.gameObject.tag=="Enemy")
         {
-            myanims.SetTrigger("Take_Hit");
-        }
+			Debug.Log("hasar");
+			myanims.SetTrigger("Take_Hit");
+            if(rlook==true)
+			    rb2D.AddForce(new Vector2(0, JumpPower));
+            else if(rlook==false)
+				rb2D.AddForce(new Vector2(0, JumpPower));
+		}
        
     }
     /*private void OnTriggerEnter2D(Collider2D collision)
