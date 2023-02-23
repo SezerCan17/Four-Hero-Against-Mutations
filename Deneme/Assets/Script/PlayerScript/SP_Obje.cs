@@ -7,34 +7,35 @@ public class SP_Obje : MonoBehaviour
 
     Player Player;
     public Animator myanims;
-    public int maxObjects = 100;
-    public int objects;
+    public int maxObjects = 5;
+    public int objects=0;
 
-    public HealthBar healthBar;
+    public HealthBar GreenBar2;
     void Start()
     {
-        objects = maxObjects;
         Player = GetComponent<Player>();
-        healthBar.SetMaxHealth(maxObjects);
+        GreenBar2.SetMaxHealth(maxObjects);
+        //healthBar2.SetMaxObjects(maxObjects);
     }
 
-    private void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (Input.GetKeyDown(KeyCode.O))
+        if (collision.gameObject.tag == "Objects")
         {
-            TakeObjects(1);
+            Debug.Log("girdi1");
+            if (objects <= 2)
+            {
+                Debug.Log("girdi2");
+                collision.gameObject.SetActive(false);
+                objects++;
+            }
+
         }
     }
-
 
     public void TakeObjects(int obj)
     {
-
         objects += obj;
-        if (objects <= 0)
-        {
-            Player.Death();
-        }
-        healthBar.SetHealth(objects);
+        GreenBar2.SetHealth(objects);
     }
 }
