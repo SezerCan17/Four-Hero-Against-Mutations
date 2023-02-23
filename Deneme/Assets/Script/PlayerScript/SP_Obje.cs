@@ -15,7 +15,15 @@ public class SP_Obje : MonoBehaviour
     {
         Player = GetComponent<Player>();
         GreenBar2.SetMaxHealth(maxObjects);
-        //healthBar2.SetMaxObjects(maxObjects);
+        
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyUp(KeyCode.B))
+        {
+            
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

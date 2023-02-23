@@ -67,6 +67,7 @@ public class Player : MonoBehaviour
         if(rb2D.velocity.y<0)
         {
             myanims.SetBool("Down", true);
+            rb2D.velocity = new Vector2(hori * speed, rb2D.velocity.y);
         }
         else
         {
@@ -146,7 +147,7 @@ public class Player : MonoBehaviour
 
     
 
-    private void Sp_Attack()
+    public void Sp_Attack()
     {
         if(counterObjects==3)
         {
@@ -263,20 +264,6 @@ public class Player : MonoBehaviour
 		}
        
     }
-    /*private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Objects")
-        {
-            Debug.Log("girdi1");
-            if (counterObjects <= 2)
-            {
-                Debug.Log("girdi2");
-                collision.gameObject.SetActive(false);
-                Sp_Attack();
-                counterObjects++;
-            }
-
-        }
-    }*/
+    
 
 }
