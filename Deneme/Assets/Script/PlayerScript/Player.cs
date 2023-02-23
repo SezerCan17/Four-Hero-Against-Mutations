@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class Player : MonoBehaviour
 {
     public Rigidbody2D rb2D;
     private Animator myanims;
+    PlayerHealth ph;
 
     [SerializeField]
     private float speed;
@@ -16,6 +18,8 @@ public class Player : MonoBehaviour
     private Transform[] ContactPoint;
     public float ContactDimater;
     public LayerMask whichGround;
+    public Image[] hearths;
+    private int hearth_=3;
 
     private bool inGround;
     private bool jump;
@@ -42,6 +46,7 @@ public class Player : MonoBehaviour
         rlook= true;
         rb2D= GetComponent<Rigidbody2D>();
         myanims= GetComponent<Animator>();
+        ph = GetComponent<PlayerHealth>();
         
     }
 
@@ -165,6 +170,17 @@ public class Player : MonoBehaviour
     public void Death()
     {
         myanims.SetTrigger("Death");
+        hearth_ -= 1;
+
+        if (hearth_ >= 1)
+        {
+            hearths[hearth_].gameObject.SetActive(false);
+            ph.health = 100;
+        }
+        /*else if(hearth_<= -1)
+        {
+
+        }*/
         
     }
 
@@ -258,9 +274,9 @@ public class Player : MonoBehaviour
 			Debug.Log("hasar");
 			myanims.SetTrigger("Take_Hit");
             if(rlook==true)
-			    rb2D.AddForce(new Vector2(0, JumpPower));
+			    rb2D.AddForce(new Vector2(-2500,10));
             else if(rlook==false)
-				rb2D.AddForce(new Vector2(0, JumpPower));
+				rb2D.AddForce(new Vector2(2500,10));
 		}
        
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerHealth : MonoBehaviour
 {
     Player Player;
@@ -17,14 +18,7 @@ public class PlayerHealth : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.P)) 
-        {
-            TakeDamage(20);
-        }
-        
-    }
+
     public void TakeDamage(int damage)
     {
         
@@ -35,5 +29,14 @@ public class PlayerHealth : MonoBehaviour
         }
 		healthBar.SetHealth(health);
 	}
-    
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            TakeDamage(20);
+        }
+
+    }
+
 }
