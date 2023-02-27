@@ -6579,13 +6579,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 949769588}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18d293d7789e9204e9fd3be7885ef66b, type: 3}
+  m_Script: {fileID: 11500000, guid: 57e8ce5e90ce8ea468cedaa3608957ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   myanims: {fileID: 0}
-  maxObjects: 5
+  maxObjects: 100
   objects: 0
-  GreenBar2: {fileID: 0}
+  obj: 0
+  greenBar: {fileID: 0}
 --- !u!1 &967482296
 GameObject:
   m_ObjectHideFlags: 0
@@ -9243,10 +9244,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1260115871}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38180686f36454044a82bf61bee648aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 892a6ee11fc5a684091d7725bfa9e54b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider2: {fileID: 1260115873}
+  greenSlider: {fileID: 1260115873}
 --- !u!1 &1283149290
 GameObject:
   m_ObjectHideFlags: 0
@@ -18851,6 +18852,7 @@ GameObject:
   - component: {fileID: 1841743954}
   - component: {fileID: 1841743953}
   - component: {fileID: 1841743950}
+  - component: {fileID: 1841743955}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Objects
@@ -18941,6 +18943,23 @@ Transform:
   m_Father: {fileID: 47346682}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1841743955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841743949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18d293d7789e9204e9fd3be7885ef66b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  myanims: {fileID: 0}
+  maxObjects: 5
+  objects: 0
+  GreenBar: {fileID: 0}
 --- !u!1 &1902170899
 GameObject:
   m_ObjectHideFlags: 0

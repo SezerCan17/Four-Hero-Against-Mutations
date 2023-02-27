@@ -172,7 +172,7 @@ public class Player : MonoBehaviour
         myanims.SetTrigger("Death");
         hearth_ -= 1;
 
-        if (hearth_ >= 1)
+        if (hearth_ >= 0)
         {
             hearths[hearth_].gameObject.SetActive(false);
             ph.health = 100;
