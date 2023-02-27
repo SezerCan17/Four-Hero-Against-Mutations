@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class GreenBar : MonoBehaviour
 {
     public Slider greenSlider;
-    public void SetMaxHealth(int health)
+    public void SetMaxHealth(int obj)
     {
-        greenSlider.maxValue = health;
+        greenSlider.maxValue = 3;
         greenSlider.value = 0;
     }
 
-    public void SetHealth(int health)
+    public void SetHealth(int obj)
     {
-        greenSlider.value = health;
+        greenSlider.value = obj;
     }
 }

@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class SP_Objects : MonoBehaviour
 {
-    Player Player;
+
+    public Player Player;
+    public GreenBar greenBar;
+    public GameObject Obje;
     public Animator myanims;
     public int maxObjects = 100;
     public int objects;
     public int obj;
 
-    public HealthBar greenBar;
+    
     void Start()
     {
         objects = 0;
         Player = GetComponent<Player>();
         greenBar.SetMaxHealth(objects);
     }
-
-
     public void TakeDamage(int damage)
     {
 
@@ -33,7 +34,8 @@ public class SP_Objects : MonoBehaviour
         if (collision.gameObject.tag == "Objects")
         {
             TakeDamage(obj);
-        }
+            Obje.SetActive(false);
 
+        }
     }
 }
