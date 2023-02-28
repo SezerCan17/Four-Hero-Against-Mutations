@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,31 +11,54 @@ public class SP_Objects : MonoBehaviour
     public Animator myanims;
     public int maxObjects = 100;
     public int objects;
+    public bool Sp_attack;
     public int obj;
 
     
     void Start()
     {
+        Sp_attack= false;
         objects = 0;
         Player = GetComponent<Player>();
-        greenBar.SetMaxHealth(objects);
+        greenBar.SetMaxObject(objects);
+    }
+
+    void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            myanims.SetTrigger("Sp_Attack");
+        }
+    }
+
+    /*public void Sp_Attack()
+    {
+        if (obj == 3)
+        {
+            Sp_attack = true;
+        }
+        if (Sp_attack)
+        {
+            myanims.SetTrigger("Sp_Attack");
+            Sp_attack = false;
+            objects = 0;
+        }
     }
     public void TakeDamage(int damage)
     {
-
         objects += 1;
         obj = objects;
-
-        greenBar.SetHealth(obj);
+        greenBar.SetObject(obj);
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Objects")
         {
-            TakeDamage(obj);
-            Obje.SetActive(false);
-
+            if (obj <= 2)
+            {
+                TakeDamage(obj);
+                collision.gameObject.SetActive(false);
+            }
         }
     }
-}
+}*/
