@@ -271,7 +271,7 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.tag=="Enemy")
         {
-			Debug.Log("hasar");
+		
 			myanims.SetTrigger("Take_Hit");
             if(rlook==true)
 			    rb2D.AddForce(new Vector2(-2500,10));

@@ -18,7 +18,7 @@ public class enemy : MonoBehaviour
     private void Update()
     {
 		
-		transform.Translate(Vector3.right*speed*Time.deltaTime);
+		transform.Translate(Vector3.left*speed*Time.deltaTime);
 		//animator.SetBool("move", true);
 	}
     IEnumerator SwitchDirection()

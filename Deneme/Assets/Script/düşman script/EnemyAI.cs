@@ -14,8 +14,8 @@ public class EnemyAI : MonoBehaviour
     int currentWaypoint = 0;
     bool reachedEndOfPath = false;
     Seeker seeker;
-    Rigidbody2D rb;
-    
+    public Rigidbody2D rb;
+	Enemy2 Enemy;
 
 
 	void Start()
@@ -65,15 +65,15 @@ public class EnemyAI : MonoBehaviour
         }
 		if (rb.velocity.x > 0)
 		{
-			enemyGFX.localScale = new Vector3(-1f, 1f, 1f);
+			enemyGFX.localScale = new Vector3(1f, 1f, 1f);
 		}
 		else if (rb.velocity.x < 0)
 		{
-			enemyGFX.localScale = new Vector3(1f, 1f, 1f);
+			enemyGFX.localScale = new Vector3(-1f, 1f, 1f);
 		}
 		
 		animator.SetFloat("speed", Mathf.Abs(rb.velocity.x));
 
-        
+		Enemy.faceRight = false;
 	}
 }
