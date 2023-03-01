@@ -10,8 +10,9 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb2D;
     private Animator myanims;
     PlayerHealth ph;
-    GreenBar greenbar;
     
+    public Slider greenSlider;
+
 
     [SerializeField]
     private float speed;
@@ -38,7 +39,12 @@ public class Player : MonoBehaviour
     private bool dash;
     private bool defend;
 
-    public GreenBar greenBar;
+    [SerializeField]
+    private float geriTepkiSuresi, geriTepkiGucu;
+
+    private float geriTepkiSayaci;
+
+   
     public GameObject Obje;
     public int maxObjects = 100;
     public int objects;
@@ -56,10 +62,10 @@ public class Player : MonoBehaviour
         rb2D= GetComponent<Rigidbody2D>();
         myanims= GetComponent<Animator>();
         ph = GetComponent<PlayerHealth>();
-        greenbar = GetComponent<GreenBar>();
+        
         Sp_attack = false;
         objects= 0;
-        greenBar.SetMaxObject(objects);
+        SetMaxObject(objects);
 
 	}
 
@@ -70,13 +76,34 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float hori = Input.GetAxis("Horizontal");
-        inGround = atGround();
-        BasicMovement(hori);
-        ChangeDirection(hori);
-        AttackMovement();
-        Reset_();
+        if(geriTepkiSayaci<=0)
+        {
+            float hori = Input.GetAxis("Horizontal");
+            inGround = atGround();
+            BasicMovement(hori);
+            ChangeDirection(hori);
+            AttackMovement();
+            Reset_();
+        }
+        else
+        {
+            geriTepkiSayaci -= Time.deltaTime;
+            if(rlook)
+            {
+                rb2D.velocity=new Vector2(-geriTepkiGucu,rb2D.velocity.y);
+            }
+            else
+            {
+                rb2D.velocity = new Vector2(geriTepkiGucu, rb2D.velocity.y);
+            }
+        }
         
+    }
+
+    public void GeriTepkiFNC()
+    {
+        geriTepkiSayaci = geriTepkiSuresi;
+        rb2D.velocity = new Vector2(0, rb2D.velocity.y);
     }
 
     private void BasicMovement(float hori)
@@ -155,19 +182,37 @@ public class Player : MonoBehaviour
 
     public void Death()
     {
-        myanims.SetTrigger("Death");
+        
         hearth_ -= 1;
 
         if (hearth_ >= 0)
         {
             hearths[hearth_].gameObject.SetActive(false);
-            ph.health = 100;
+            if(hearth_>0)
+            {
+                ph.health = 100;
+            }
+            
         }
-        /*else if(hearth_<= -1)
+        else
         {
-
-        }*/
+            
+            rb2D.bodyType = RigidbodyType2D.Static;
+            myanims.SetTrigger("Death");
+        }
         
+    }
+
+    
+    public void SetMaxObject(int obj)
+    {
+        greenSlider.maxValue = 3;
+        greenSlider.value = 0;
+    }
+
+    public void SetObject(int obj)
+    {
+        greenSlider.value = obj;
     }
 
     public void SP_attack()
@@ -179,7 +224,7 @@ public class Player : MonoBehaviour
         if (Sp_attack)
         {
             myanims.SetTrigger("Sp_Attack");
-            greenbar.greenSlider.value = 0;
+            greenSlider.value = 0;
             Sp_attack = false;
             objects = 0;
         }
@@ -268,7 +313,7 @@ public class Player : MonoBehaviour
     public void TakeObject(int objects)
     {
         this.objects += 1;
-        greenBar.SetObject(this.objects);
+        SetObject(this.objects);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -276,7 +321,7 @@ public class Player : MonoBehaviour
         {
             if (objects <= 2)
             {
-                Sp_attack= true; 
+                 
                 TakeObject(objects);
                 collision.gameObject.SetActive(false);
             }
@@ -286,12 +331,8 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-
             myanims.SetTrigger("Take_Hit");
-            if (rlook == true)
-                rb2D.AddForce(new Vector2(-2500, 10));
-            else if (rlook == false)
-                rb2D.AddForce(new Vector2(2500, 10));
+            GeriTepkiFNC();
         }
     }
 }
