@@ -5,29 +5,30 @@ using UnityEngine;
 
 public class Enemy2 : MonoBehaviour
 {
-	EnemyAI EnemyAI;
-	Animator animator;
+	public Animator animator;
 	public float speed = 5f;
-	public bool faceRight =true;
-	private void Start()
+	public bool faceRight;
+	public Transform enemyGFX;
+	public Rigidbody2D rb;
+	public void Start()
 	{
-
-		faceRight = true;
+		rb = GetComponent<Rigidbody2D>();
+		faceRight = false;
 	}
 
-	private void Update()
+	public void Update()
 	{
+
 		transform.Translate(Vector3.right * speed * Time.deltaTime);
-		if (EnemyAI.rb.velocity.x < 0)
+		if (speed>0)
 		{
-			transform.Translate(Vector3.left * speed * Time.deltaTime);
+			enemyGFX.localScale = new Vector3(1f, 1f, 1f);
 		}
-		else if (EnemyAI.rb.velocity.x > 0)
+		else if (speed<0)
 		{
-			transform.Translate(Vector3.right * speed * Time.deltaTime);
+			enemyGFX.localScale = new Vector3(-1f, 1f, 1f);
 		}
-
-
+		animator.SetFloat("speed", Mathf.Abs(speed));
 
 	}
 	public void OnCollisionEnter2D(Collision2D collision)

@@ -74,6 +74,6 @@ public class EnemyAI : MonoBehaviour
 		
 		animator.SetFloat("speed", Mathf.Abs(rb.velocity.x));
 
-		Enemy.faceRight = false;
+		
 	}
 }

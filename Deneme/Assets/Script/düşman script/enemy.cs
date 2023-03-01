@@ -8,7 +8,7 @@ public class enemy : MonoBehaviour
     Animator animator;
     public float speed =5f;
     bool faceRight = false;
-    public int turnDelay;
+    public float turnDelay;
     private void Start()
     {
 		

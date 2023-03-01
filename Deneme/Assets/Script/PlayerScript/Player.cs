@@ -47,8 +47,9 @@ public class Player : MonoBehaviour
 
     public GameObject objects_;
     public int counterObjects = 0;
+    
 
-    void Start()
+	void Start()
     {
         dash= false;
         rlook= true;
@@ -60,7 +61,7 @@ public class Player : MonoBehaviour
         objects= 0;
         greenBar.SetMaxObject(objects);
 
-    }
+	}
 
     private void Update()
     {
@@ -283,14 +284,14 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag=="Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
-		
-			myanims.SetTrigger("Take_Hit");
-            if(rlook==true)
-			    rb2D.AddForce(new Vector2(-2500,10));
-            else if(rlook==false)
-				rb2D.AddForce(new Vector2(2500,10));
-		}
+
+            myanims.SetTrigger("Take_Hit");
+            if (rlook == true)
+                rb2D.AddForce(new Vector2(-2500, 10));
+            else if (rlook == false)
+                rb2D.AddForce(new Vector2(2500, 10));
+        }
     }
 }
