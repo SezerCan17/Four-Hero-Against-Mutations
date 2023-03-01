@@ -8,4 +8,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 6ed3517934d9a6b47bd8d69084d23649
+  - enabled: 1
+    path: Assets/Scenes/CharacterMenu.unity
+    guid: 1c5aab53cf1834649bae41fa10af89a8
+  - enabled: 1
+    path: Assets/Scenes/ElfCharacter.unity
+    guid: 4fc229a85ac838846b945b9b7eada70a
+  - enabled: 1
+    path: Assets/Scenes/FireMan.unity
+    guid: 290c5a79b9902d5418d1e74dcce7dbf0
+  - enabled: 1
+    path: Assets/Scenes/DesertCharacter.unity
+    guid: 210686321425e124ca35954b7176a1b6
+  - enabled: 1
+    path: Assets/Scenes/WomanCharacter.unity
+    guid: 48014d4cf8942474b86cc50e5e88c589
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
