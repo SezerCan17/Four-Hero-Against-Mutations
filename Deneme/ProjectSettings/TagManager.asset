@@ -9,6 +9,7 @@ TagManager:
   - Objects
   - Area
   - secretwall
+  - BossArea
   layers:
   - Default
   - TransparentFX
