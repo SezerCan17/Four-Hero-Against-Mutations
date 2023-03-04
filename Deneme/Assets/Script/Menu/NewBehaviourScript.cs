@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class NewBehaviourScript : MonoBehaviour
 {
+    private Animator anims;
+
+    private void Start()
+    {
+        anims = GetComponent<Animator>();
+    }
     public void PlayButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -12,7 +18,9 @@ public class NewBehaviourScript : MonoBehaviour
 
     public void SettingsButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 5);
+        Debug.Log("Settings girdi");
+        anims.SetTrigger("MainMenu");
+        anims.SetTrigger("OptionsMenu");
     }
 
     public void QuitButton()
