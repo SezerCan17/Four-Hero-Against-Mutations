@@ -19,13 +19,11 @@ public class bossAttack : StateMachineBehaviour
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		if (timeRemaining > 0)
-		{
-			timeRemaining -= Time.deltaTime;
-		}
+		
 		if (Vector2.Distance(player.position, rb.position) <= attackRange)
 		{
 			animator.SetTrigger("Attack");
+			timer();
 		}
 		else if (Vector2.Distance(player.position, rb.position) > attackRange)
 		{
@@ -41,5 +39,15 @@ public class bossAttack : StateMachineBehaviour
 	{
 		animator.ResetTrigger("Attack");
 	}
-	
+	void timer()
+	{
+		timeRemaining = 5;
+		if (timeRemaining > 0)
+		{
+			timeRemaining -= Time.deltaTime;
+		}
+	}
+
+
+
 }
