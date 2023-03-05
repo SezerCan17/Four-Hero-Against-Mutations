@@ -11,7 +11,16 @@ public class Player : MonoBehaviour
     private Animator myanims;
     PlayerHealth ph;
     
+    
+    
     public Slider greenSlider;
+
+    public Transform Showerr_;
+    public GameObject Shower;
+    public float ShowerCounter;
+    public float ShowerCounter2;
+    public bool canAttack3;
+    public bool canAttack3_2;
 
 
     [SerializeField]
@@ -38,6 +47,7 @@ public class Player : MonoBehaviour
     private bool roll;
     private bool dash;
     private bool defend;
+    public bool say;
 
     [SerializeField]
     private float geriTepkiSuresi, geriTepkiGucu;
@@ -57,11 +67,17 @@ public class Player : MonoBehaviour
 
 	void Start()
     {
-        dash= false;
+        canAttack3 = true;
+        canAttack3_2= true;
+        ShowerCounter = 0;
+        ShowerCounter2= 0;
+        dash = false;
         rlook= true;
         rb2D= GetComponent<Rigidbody2D>();
         myanims= GetComponent<Animator>();
         ph = GetComponent<PlayerHealth>();
+       
+        
         
         Sp_attack = false;
         objects= 0;
@@ -72,6 +88,8 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Controller();
+        counter();
+        
     }
 
     private void FixedUpdate()
@@ -99,6 +117,25 @@ public class Player : MonoBehaviour
         }
         
     }
+
+    public void counter()
+    {
+        ShowerCounter -= Time.deltaTime;
+        if (ShowerCounter <= 0)
+        {
+            canAttack3 = true;
+            
+        }
+
+    }
+    /*public void counter2()
+    {
+        ShowerCounter2-= Time.deltaTime;
+        if(ShowerCounter2<=0)
+        {
+            canAttack3_2 = true;
+        }
+    }*/
 
     public void GeriTepkiFNC()
     {
@@ -169,13 +206,28 @@ public class Player : MonoBehaviour
             else if (attack2 && !this.myanims.GetCurrentAnimatorStateInfo(0).IsTag("Attack2"))
             {
                 myanims.SetTrigger("Attack2");
-                rb2D.velocity = Vector2.zero;
+                rb2D.velocity = new Vector2(0,0);
+
             }
-            else if (attack3 && !this.myanims.GetCurrentAnimatorStateInfo(0).IsTag("Attack3"))
+            else if (attack3 && !this.myanims.GetCurrentAnimatorStateInfo(0).IsTag("Attack3") && inGround)
             {
-                myanims.SetTrigger("Attack3");
-                rb2D.velocity = Vector2.zero;
+
+                if (canAttack3)
+                {
+                  myanims.SetTrigger("Attack3");
+
+                   IEnumerator Attack3_()
+                   {
+                     yield return new WaitForSecondsRealtime(1f);
+                     GameObject sil = Instantiate(Shower, Showerr_.transform.position, Showerr_.transform.rotation);
+                     Destroy(sil, 0.667f);
+                    
+                   }
+                
+                }
+                
             }
+       
     }
 
     

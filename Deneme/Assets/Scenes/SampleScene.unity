@@ -5974,6 +5974,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3151412129623190752, guid: 4c7668f32ddf4c843bc8d57bf6b43000, type: 3}
   m_PrefabInstance: {fileID: 3737218}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &524048640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 524048641}
+  m_Layer: 0
+  m_Name: Shower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &524048641
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524048640}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.4, y: -0.48, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 949769593}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &526862950
 GameObject:
   m_ObjectHideFlags: 0
@@ -6594,7 +6625,7 @@ GameObject:
   m_Component:
   - component: {fileID: 551871246}
   - component: {fileID: 551871245}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: CameraCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7672,7 +7703,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 632240055}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -54.97, y: -2.3078198, z: 0.03817963}
+  m_LocalPosition: {x: -54.3, y: -2.3078198, z: 0.03817963}
   m_LocalScale: {x: 3.8034, y: 3.8049, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9437,7 +9468,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 949769593}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45.382}
 --- !u!1 &838112019
 GameObject:
@@ -11065,6 +11096,7 @@ GameObject:
   - component: {fileID: 949769599}
   - component: {fileID: 949769600}
   - component: {fileID: 949769602}
+  - component: {fileID: 949769603}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -11173,15 +11205,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 949769588}
   m_LocalRotation: {x: -0, y: -0, z: 0.00747499, w: 0.9999721}
-  m_LocalPosition: {x: -16.447, y: 0.685, z: 0}
+  m_LocalPosition: {x: -20.6, y: 0.7, z: 0}
   m_LocalScale: {x: 1.2007189, y: 1.1217396, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 906805378}
   - {fileID: 447620035}
-  - {fileID: 2131874160}
   - {fileID: 1021781525}
   - {fileID: 828074530}
+  - {fileID: 524048641}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.857}
@@ -11199,7 +11231,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb2D: {fileID: 949769590}
   greenSlider: {fileID: 1260115873}
-  speed: 7
+  Showerr_: {fileID: 524048641}
+  Shower: {fileID: 5523405540538034445, guid: 7c45d466708d5914cb65cdefa4f39c03, type: 3}
+  ShowerCounter: 0
+  ShowerCounter2: 0
+  canAttack3: 0
+  canAttack3_2: 0
+  speed: 10
   ContactPoint:
   - {fileID: 1586273953}
   - {fileID: 101318286}
@@ -11207,13 +11245,14 @@ MonoBehaviour:
   ContactDimater: 0.1
   whichGround:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 8
   hearths:
   - {fileID: 2139844386}
   - {fileID: 1132794450}
   - {fileID: 735797085}
   AirControll: 0
   JumpPower: 500
+  say: 0
   geriTepkiSuresi: 0.4
   geriTepkiGucu: 5
   Obje: {fileID: 0}
@@ -11302,6 +11341,21 @@ MonoBehaviour:
   other6Object: {fileID: 671553004}
   BOSS: {fileID: 1257932875}
   enterArea: {fileID: 1799697528}
+--- !u!114 &949769603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949769588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98931b46f10a2143bf2c3ee8256f056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canAttack3_2: 0
+  ShowerCounter2: 0
+  say: 0
 --- !u!1 &951114160
 GameObject:
   m_ObjectHideFlags: 0
@@ -12256,7 +12310,7 @@ Transform:
   - {fileID: 101318286}
   - {fileID: 820557945}
   m_Father: {fileID: 949769593}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1022836761
 PrefabInstance:
@@ -25649,7 +25703,7 @@ GameObject:
   - component: {fileID: 1747052631}
   - component: {fileID: 1747052630}
   - component: {fileID: 1747052629}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: platform
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -50990,52 +51044,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2131874159
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2131874160}
-  - component: {fileID: 2131874161}
-  m_Layer: 0
-  m_Name: Shower
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2131874160
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2131874159}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.37, y: -0.53, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 949769593}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2131874161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2131874159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46c8bed2d6c85b945ae5bb0071201311, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Showerr_: {fileID: 2131874160}
-  Shower: {fileID: 5523405540538034445, guid: 7c45d466708d5914cb65cdefa4f39c03, type: 3}
 --- !u!1 &2134100772
 GameObject:
   m_ObjectHideFlags: 0
