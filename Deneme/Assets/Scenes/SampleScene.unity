@@ -11350,9 +11350,9 @@ MonoBehaviour:
   Showerr_: {fileID: 524048641}
   Shower: {fileID: 5523405540538034445, guid: 7c45d466708d5914cb65cdefa4f39c03, type: 3}
   ShowerCounter: 0
-  ShowerCounter2: 0
+  attack1Counter: 0
   canAttack3: 0
-  canAttack3_2: 0
+  canAttack1: 0
   speed: 10
   ContactPoint:
   - {fileID: 1586273953}
@@ -11368,7 +11368,6 @@ MonoBehaviour:
   - {fileID: 735797085}
   AirControll: 0
   JumpPower: 500
-  say: 0
   geriTepkiSuresi: 0.4
   geriTepkiGucu: 5
   Obje: {fileID: 0}
@@ -11409,6 +11408,8 @@ MonoBehaviour:
   ArrowPrefabs: {fileID: 6652345092399380160, guid: de3a0fc3766e3b440bb98543ccf26ed6, type: 3}
   Arrow2_: {fileID: 828074530}
   ArrowPrefabs2: {fileID: 5671273059327376825, guid: 6bbcbffd6ff893445855d52b8ca76c2d, type: 3}
+  Counter: 0
+  canAttack1: 0
 --- !u!70 &949769600
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -14715,9 +14716,9 @@ GameObject:
   - component: {fileID: 1227186447}
   - component: {fileID: 1227186446}
   - component: {fileID: 1227186445}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: "duvarlari\xE7in"
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
