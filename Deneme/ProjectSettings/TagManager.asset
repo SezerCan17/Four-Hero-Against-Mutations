@@ -10,6 +10,8 @@ TagManager:
   - Area
   - secretwall
   - BossArea
+  - PlayerAttackPoint
+  - EnemyAttackPoint
   layers:
   - Default
   - TransparentFX
