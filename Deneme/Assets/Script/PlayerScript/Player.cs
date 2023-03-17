@@ -200,7 +200,7 @@ public class Player : MonoBehaviour
             {
                   myanims.SetTrigger("Attack1");
                   rb2D.velocity = Vector2.zero;
-                  
+
             }
             else if (attack2 && !this.myanims.GetCurrentAnimatorStateInfo(0).IsTag("Attack2") && canAttack1)
             {
