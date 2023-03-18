@@ -9,6 +9,7 @@ public class enemyAttack : StateMachineBehaviour
      
     Rigidbody2D rb;
     public float attackRange = 3f;
+    EnemyHealth EnemyHealth;
 
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -23,7 +24,12 @@ public class enemyAttack : StateMachineBehaviour
         if (Vector2.Distance(player.position, rb.position) <= attackRange)
         {
             animator.SetTrigger("Attack");
-            
+			
+
+		}
+        if (EnemyHealth.isHurting)
+        {
+			animator.SetTrigger("Hurt");
 		}
 		
 		else if (Vector2.Distance(player.position, rb.position) > attackRange)

@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
 	Animator animator;
     public int currentHealth;
     public int maxHealth=100;
+	public bool isHurting = false;
     void Start()
     {
 		player = GameObject.FindWithTag("Player");
@@ -18,21 +19,22 @@ public class EnemyHealth : MonoBehaviour
 	{
 
 		currentHealth -= damage;
+		isHurting = true ;
 		if (currentHealth <= 0)
 		{
-			
+			animator.SetTrigger("Death");
 		}
 		
 	}
-	public void OnCollisionEnter2D(Collision2D collision)
+	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		
 		if (collision.gameObject.CompareTag("PlayerAttackPoint"))
 		{
 			TakeDamage(20);
-			animator.SetTrigger("Hurt");
+			
 		}
-
+		
 	}
 
 }

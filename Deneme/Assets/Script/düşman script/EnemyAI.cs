@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     Seeker seeker;
     public Rigidbody2D rb;
 	Enemy2 Enemy;
+    public GameObject attack;
 
 
 	void Start()
@@ -25,6 +26,7 @@ public class EnemyAI : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         InvokeRepeating("UpdatePath", 0f, .5f);
+        attack.SetActive(false);
         
     }
     void UpdatePath()
@@ -43,7 +45,7 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+		attack.SetActive(false);
 		if (path == null)
         {
             return;
@@ -73,6 +75,10 @@ public class EnemyAI : MonoBehaviour
 		{
 			enemyGFX.localScale = new Vector3(-1f, 1f, 1f);
 		}
+        if(rb.velocity.x < 0.0001 && rb.velocity.x > -0.0001)
+        {
+            attack.SetActive(true);
+        }
 		
 		animator.SetFloat("speed", Mathf.Abs(rb.velocity.x));
 

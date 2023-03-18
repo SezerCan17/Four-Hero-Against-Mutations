@@ -108,11 +108,11 @@ public class Player : MonoBehaviour
             geriTepkiSayaci -= Time.deltaTime;
             if(rlook)
             {
-                rb2D.velocity=new Vector2(-geriTepkiGucu,rb2D.velocity.y);
+                rb2D.velocity=new Vector2(-geriTepkiGucu,7);
             }
             else
             {
-                rb2D.velocity = new Vector2(geriTepkiGucu, rb2D.velocity.y);
+                rb2D.velocity = new Vector2(geriTepkiGucu, 7);
             }
         }
         
@@ -381,13 +381,22 @@ public class Player : MonoBehaviour
                 collision.gameObject.SetActive(false);
             }
         }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
+		if (collision.gameObject.tag == "EnemyAttackPoint")
+		{
+			myanims.SetTrigger("Take_Hit");
+			GeriTepkiFNC();
+		}
+	}
+	
+	
+	private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
             myanims.SetTrigger("Take_Hit");
             GeriTepkiFNC();
         }
+
     }
+	
 }

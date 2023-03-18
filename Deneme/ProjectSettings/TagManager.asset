@@ -12,6 +12,7 @@ TagManager:
   - BossArea
   - PlayerAttackPoint
   - EnemyAttackPoint
+  - takeDamage
   layers:
   - Default
   - TransparentFX
