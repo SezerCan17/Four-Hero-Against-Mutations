@@ -5062,7 +5062,7 @@ MonoBehaviour:
     m_Bits: 8
   hearths: []
   AirControll: 0
-  JumpPower: 100
+  JumpPower: 300
   geriTepkiSuresi: 0
   geriTepkiGucu: 0
   Obje: {fileID: 0}
